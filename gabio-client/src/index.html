@@ -12,30 +12,31 @@
 
     <label for="operation">Operação:</label>
     <select id="operation">
-        <option value="BALANCE">BALANCE</option>
-        <option value="DEPOSIT">DEPOSIT</option>
-        <option value="WITHDRAW">WITHDRAW</option>
-        <option value="TRANSFER">TRANSFER</option>
+        <option value="BALANCE">SALDO</option>
+        <option value="DEPOSIT">DEPOSITAR</option>
+        <option value="WITHDRAW">SAQUE</option>
+        <option value="TRANSFER">TRANSFERIR</option>
     </select>
 
     <br><br>
 
-    <label>Account ID:</label>
+    <label>ID da conta:</label>
     <input type="text" id="accountId"><br><br>
 
     <div id="toAccountContainer">
-        <label>To Account ID (para TRANSFER):</label>
+        <label>ID da conta de destino:</label>
         <input type="text" id="toAccountId"><br><br>
     </div>
 
     <div id="valueContainer">
-        <label>Value:</label>
+        <label>Valor:</label>
         <input type="number" id="value" step="0.01"><br><br>
     </div>
 
     <button id="send">Enviar</button>
+    <br>
 
-    <h3>Resposta do Servidor:</h3>
+    <h3>Resposta do Banco:</h3>
     <pre id="response"></pre>
 
     <script src="client.ts"></script>

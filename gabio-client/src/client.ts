@@ -26,15 +26,54 @@ operationEl.addEventListener("change", updateFieldVisibility);
 
 
 socket.addEventListener("open", () => {
-    statusEl.innerText = "Status: Conectado ao servidor";
+    statusEl.innerText = "Status: Banco Online";
+});
+socket.addEventListener("open", () => {
+    console.log("Status: Conectado ao servidor") ;
 });
 
 socket.addEventListener("close", () => {
-    statusEl.innerText = "Status: Desconectado";
+    statusEl.innerText = "Status: Banco Offline";
+});
+socket.addEventListener("close", () => {
+   console.log("Status: Desconectado do servidor");
 });
 
 socket.addEventListener("message", (event) => {
-    responseEl.textContent = event.data;
+    const lines = (event.data as string).split('\n');
+    let message = "";
+    let balance = "";
+
+    for (const line of lines) {
+        if (line.startsWith("MESSAGE:")) {
+            message = line.replace("MESSAGE:", "").trim();
+        } else if (line.startsWith("BALANCE:")) {
+            balance = line.replace("BALANCE:", "").trim();
+        }
+    }
+
+    // Montar a resposta completa
+    let response = "";
+
+    if (message) {
+        response += message + "\n";
+    }
+    if (balance) {
+        response += `SALDO: ${balance}`;
+    }
+
+    if (!response) {
+        response = "Resposta não reconhecida.";
+    }
+
+    responseEl.textContent = response;
+});
+
+
+
+
+socket.addEventListener("message", (event) => {
+     console.log(event.data);
 });
 
 document.getElementById("send")!.addEventListener("click", () => {
@@ -56,3 +95,4 @@ VALUE:${value || '0'}`;
 
     socket.send(request);
 });
+
