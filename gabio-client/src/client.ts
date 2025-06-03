@@ -1,3 +1,6 @@
+//client.ts
+
+
 const socket : WebSocket = new WebSocket("ws://localhost:8080");
 
 const statusEl = document.getElementById("status")!;
