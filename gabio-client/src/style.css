@@ -31,6 +31,8 @@ form, #status, #response, #operation, #accountId, #toAccountId, #value, button {
     width: 100%;
 }
 
+
+
 #status {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -41,7 +43,7 @@ form, #status, #response, #operation, #accountId, #toAccountId, #value, button {
 }
 
 /* Estilização dos inputs */
-input, select {
+input{
   width: 100%;
   padding: 12px;
   background: rgba(255, 255, 255, 0.05);
@@ -52,9 +54,26 @@ input, select {
   outline: none;
 }
 
-input::placeholder, select {
+input::placeholder{
   color: #ccc;
 }
+
+/* Estilização dos inputs */
+ select {
+  width: 100%;
+  padding: 12px;
+  background: #ffffff0d;
+  border: none;
+  border-radius: 10px;
+  color: #830000;
+  margin-bottom: 25px;
+  outline: none;
+}
+
+select {
+  color: #ff0e0e;
+}
+
 
 /* Botão */
 button#send {
